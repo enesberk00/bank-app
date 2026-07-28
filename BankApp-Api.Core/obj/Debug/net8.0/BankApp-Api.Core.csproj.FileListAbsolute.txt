@@ -1,0 +1,12 @@
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\bin\Debug\net8.0\BankApp-Api.Core.deps.json
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\bin\Debug\net8.0\BankApp-Api.Core.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\bin\Debug\net8.0\BankApp-Api.Core.pdb
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\BankApp-Api.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\BankApp-Api.Core.AssemblyInfoInputs.cache
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\BankApp-Api.Core.AssemblyInfo.cs
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\BankApp-Api.Core.csproj.CoreCompileInputs.cache
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\BankApp-Api.Core.sourcelink.json
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\BankApp-Api.Core.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\refint\BankApp-Api.Core.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\BankApp-Api.Core.pdb
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api.Core\obj\Debug\net8.0\ref\BankApp-Api.Core.dll

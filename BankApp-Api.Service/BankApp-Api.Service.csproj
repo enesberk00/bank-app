@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>BankApp_Api.Service</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BankApp-Api.Core\BankApp-Api.Core.csproj" />
+    <ProjectReference Include="..\BankApp-Api.Repository\BankApp-Api.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
