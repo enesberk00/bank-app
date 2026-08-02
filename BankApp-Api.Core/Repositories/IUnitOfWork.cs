@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankApp_Api.Core.Repositories
 {
-    internal interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork:IDisposable
     {
         Task<int> SaveChangesAsync();
     }
