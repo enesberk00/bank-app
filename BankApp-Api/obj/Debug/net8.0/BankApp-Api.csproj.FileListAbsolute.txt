@@ -26,7 +26,6 @@ C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\staticwebas
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\BankApp-.FDEE2116.Up2Date
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\BankApp-Api.dll
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\refint\BankApp-Api.dll
