@@ -1,4 +1,4 @@
-﻿using BankApp_Api.Core.DTO.Transaction;
+using BankApp_Api.Core.DTO.Transaction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Transactions;
 
 namespace BankApp_Api.Core.Services
 {
-    internal interface ITransactionService
+    public interface ITransactionService
     {
         Task<IEnumerable<TransactionDTO>> GetAllAsync();
         Task<TransactionDTO?> GetByIdAsync(int id);

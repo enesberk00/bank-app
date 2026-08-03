@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankApp_Api.Core.Services
 {
-    internal interface IAccountService
+    public interface IAccountService
     {
         Task<IEnumerable<AccountDTO>> GetAllAsync();
         Task<AccountDTO?> GetByIdAsync(int id);

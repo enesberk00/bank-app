@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankApp_Api.Core.Services
 {
-    internal interface IAuthService
+    public interface IAuthService
     {
         Task<LoginResponseDTO> LoginAsync(LoginRequestDTO dto);
         Task RegisterAsync(RegisterDTO dto);

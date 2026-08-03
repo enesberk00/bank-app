@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankApp_Api.Core.DTO.Card
 {
-    internal class CardDTO
+    public class CardDTO
     {
         public int Id { get; set; }
         public int? CustomerId { get; set; }
