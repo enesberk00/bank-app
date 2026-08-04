@@ -19,6 +19,7 @@ namespace BankApp_Api.Core.Services
         Task UpdateAsync (int id, UpdateCardDTO dto);
 
         Task DeleteAsync (int id);
+        Task ToggleStatusAsync(int id);
 
     }
 }

@@ -14,6 +14,7 @@ namespace BankApp_Api.Core.Services
         Task<IEnumerable<AccountDTO>> GetByCustomerIdAsync(int customerId);
         Task AddAsync(CreateAccountDTO dto);
         Task UpdateAsync(int id, UpdateAccountDTO dto);
+        Task ToggleStatusAsync (int id);
         Task DeleteAsync(int id);
     }
 }

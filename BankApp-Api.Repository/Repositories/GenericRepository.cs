@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BankApp_Api.Repository.Repositories
 {
-    internal class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly AppDbContext _context;
         private readonly DbSet<T> _dbSet;
@@ -47,5 +48,14 @@ namespace BankApp_Api.Repository.Repositories
             _dbSet.Remove(entity);
         }
 
+        public Task<IEnumerable<T>> WhereAsync(Expression<Func<T, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

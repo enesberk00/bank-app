@@ -1,0 +1,119 @@
+﻿using AutoMapper;
+using BankApp_Api.Core.DTO.Account;
+using BankApp_Api.Core.Repositories;
+using BankApp_Api.Core.Services;
+using BankApp_Api.Repository.Entities;
+using BankApp_Api.Repository.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankApp_Api.Service.Services
+{
+    public class AccountService : IAccountService
+    {
+
+        private readonly IGenericRepository<Account> _accountRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+
+        public AccountService(IGenericRepository<Account> accountRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        {
+            _accountRepository = accountRepository;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<AccountDTO>> GetAllAsync()
+        {
+            var accounts = await _accountRepository.WhereAsync(a => !a.IsDeleted);
+            return _mapper.Map<IEnumerable<AccountDTO>>(accounts);
+        }
+
+        public async Task<AccountDTO?> GetByIdAsync(int id)
+        {
+            var account = await _accountRepository.GetByIdAsync(id);
+            if (account == null || account.IsDeleted)
+                throw new KeyNotFoundException($"Account with id {id} not found.");
+
+            return _mapper.Map<AccountDTO>(account);
+        }
+
+        public async Task<IEnumerable<AccountDTO>> GetByCustomerIdAsync(int customerId)
+        {
+            var accounts = await _accountRepository.WhereAsync(a => a.CustomerId == customerId && !a.IsDeleted);
+            return _mapper.Map<IEnumerable<AccountDTO>>(accounts);
+        }
+
+        public async Task AddAsync(CreateAccountDTO dto)
+        {
+            var account = _mapper.Map<Account>(dto);
+
+            account.AccountNo = GenerateAccountNumber();
+            account.AccountIban = GenerateIban(account.AccountNo);
+            account.AccountStatus = true;
+            account.CreatedAt = DateTime.UtcNow;
+            account.UpdatedAt = DateTime.UtcNow;
+
+            await _accountRepository.AddAsync(account);
+            await _unitOfWork.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(int id, UpdateAccountDTO dto)
+        {
+            var account = await _accountRepository.GetByIdAsync(id);
+            if (account == null || account.IsDeleted)
+                throw new KeyNotFoundException($"Account with id {id} not found.");
+
+            account.AccountName = dto.AccountName ?? account.AccountName;   
+            account.UpdatedAt = DateTime.UtcNow;
+
+            _accountRepository.Update(account);
+            await _unitOfWork.SaveChangesAsync();
+        }
+        public async Task ToggleStatusAsync(int id)
+        {
+            var account = await _accountRepository.GetByIdAsync(id);
+            if (account == null || account.IsDeleted)
+                throw new Exception("Account not found.");
+            account.AccountStatus = !account.AccountStatus;
+            account.UpdatedAt = DateTime.UtcNow;
+            _accountRepository.Update(account);
+            await _unitOfWork.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var account = await _accountRepository.GetByIdAsync(id);
+            if (account == null || account.IsDeleted)
+                throw new KeyNotFoundException($"Account with id {id} not found.");
+            account.IsDeleted = true;
+            account.UpdatedAt = DateTime.UtcNow;
+            _accountRepository.Update(account);
+            await _unitOfWork.SaveChangesAsync();
+        }
+        // Helper methods to generate account number and IBAN
+
+        private string GenerateAccountNumber()
+        {
+            // Generate a random 10-digit account number
+            var random = new Random();
+            return random.NextInt64(1000000000, 9999999999).ToString();
+        }
+
+        private string GenerateIban(string accountNumber)
+        {
+            // For simplicity, we will generate a dummy IBAN based on the account number
+            // In a real-world scenario, you would follow the IBAN generation rules for your country
+            return $"TR00 0000 0000 {accountNumber}";
+        }
+
+
+
+
+
+
+    }
+}

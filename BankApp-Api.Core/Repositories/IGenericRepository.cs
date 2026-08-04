@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace BankApp_Api.Core.Repositories
         Task AddAsync(T entity);
         void Update(T entity);
         void Delete(T entity);
+        Task<IEnumerable<T>> WhereAsync(Expression<Func<T, bool>> predicate);
+        Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
     }
 }
