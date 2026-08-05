@@ -9,7 +9,7 @@ namespace BankApp_Api.Core.Services
 {
     public interface IAuthService
     {
-        Task<LoginResponseDTO> LoginAsync(LoginRequestDTO dto);
-        Task RegisterAsync(RegisterDTO dto);
+        Task<LoginResponseDTO> LoginAsync(LoginRequestDTO dto, CancellationToken cancellationToken = default);
+        Task RegisterAsync(RegisterDTO dto, CancellationToken cancellationToken = default);
     }
 }

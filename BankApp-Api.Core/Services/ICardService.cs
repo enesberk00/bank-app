@@ -9,17 +9,17 @@ namespace BankApp_Api.Core.Services
 {
     public interface ICardService
     {
-        Task<IEnumerable<CardDTO>> GetAllAsync();
-        Task<CardDTO> GetAsync(int id);
+        Task<IEnumerable<CardDTO>> GetAllAsync(CancellationToken cancellationToken=default);
+        Task<CardDTO> GetAsync(int id, CancellationToken cancellationToken=default);
 
-        Task<IEnumerable<CardDTO>> GetByCustomerIdAsync(int customerId);
+        Task<IEnumerable<CardDTO>> GetByCustomerIdAsync(int customerId, CancellationToken cancellationToken=default);
 
-        Task AddAsync (CreateCardDTO dto);
+        Task AddAsync (CreateCardDTO dto, CancellationToken cancellationToken=default);
 
-        Task UpdateAsync (int id, UpdateCardDTO dto);
+        Task UpdateAsync (int id, UpdateCardDTO dto, CancellationToken cancellationToken=default);
 
-        Task DeleteAsync (int id);
-        Task ToggleStatusAsync(int id);
+        Task DeleteAsync (int id, CancellationToken cancellationToken=default);
+        Task ToggleStatusAsync(int id, CancellationToken cancellationToken=default);
 
     }
 }

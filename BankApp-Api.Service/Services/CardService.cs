@@ -25,13 +25,13 @@ namespace BankApp_Api.Service.Services
             _mapper = mapper;
 
         }
-        public async Task AddAsync(CreateCardDTO dto)
+        public async Task AddAsync(CreateCardDTO dto, CancellationToken cancellationToken = default)
         {
             // İf CardType is (CardType=2) Credit Card, then check the CardLimit 
 
             if(dto.CardType == 2)
             {
-                var customer = await _customerRepository.GetByIdAsync(dto.CustomerId);
+                var customer = await _customerRepository.GetByIdAsync(dto.CustomerId, cancellationToken);
 
                 if(customer == null)
 
@@ -42,7 +42,7 @@ namespace BankApp_Api.Service.Services
                 var existingCards = await _cardRepository.WhereAsync(
                     c => c.CustomerId == dto.CustomerId
                       && c.CardType == 2
-                      && !c.IsDeleted);
+                      && !c.IsDeleted, cancellationToken);
 
                 decimal totalCardLimit = existingCards.Where(x => x.CardLimit.HasValue).Sum(x => x.CardLimit!.Value);
 
@@ -63,14 +63,14 @@ namespace BankApp_Api.Service.Services
             card.CreatedAt = DateTime.Now;
             card.UpdatedAt = DateTime.Now;
 
-            await _cardRepository.AddAsync(card);
-            await _unitOfWork.SaveChangesAsync();
+            await _cardRepository.AddAsync(card, cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
-            var card = await _cardRepository.GetByIdAsync(id);
+            var card = await _cardRepository.GetByIdAsync(id, cancellationToken);
             if(card == null || card.IsDeleted)
             {
                 throw new Exception("Card not found");
@@ -79,18 +79,18 @@ namespace BankApp_Api.Service.Services
             card.UpdatedAt = DateTime.Now;
 
             _cardRepository.Update(card);
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<CardDTO>> GetAllAsync()
+        public async Task<IEnumerable<CardDTO>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            var cards= await _cardRepository.WhereAsync(x => !x.IsDeleted);
+            var cards= await _cardRepository.WhereAsync(x => !x.IsDeleted, cancellationToken);
             return _mapper.Map<IEnumerable<CardDTO>>(cards);
         }
 
-        public Task<CardDTO> GetAsync(int id)
+        public Task<CardDTO> GetAsync(int id, CancellationToken cancellationToken = default)
         {
-            var card = _cardRepository.GetByIdAsync(id);
+            var card = _cardRepository.GetByIdAsync(id, cancellationToken);
             if(card == null)
             {
                 throw new Exception("Card not found");
@@ -99,15 +99,15 @@ namespace BankApp_Api.Service.Services
             return _mapper.Map<Task<CardDTO>>(card);
         }
 
-        public async Task<IEnumerable<CardDTO>> GetByCustomerIdAsync(int customerId)
+        public async Task<IEnumerable<CardDTO>> GetByCustomerIdAsync(int customerId, CancellationToken cancellationToken = default)
         {
-            var cards = await _cardRepository.WhereAsync(x => x.CustomerId == customerId && !x.IsDeleted);
+            var cards = await _cardRepository.WhereAsync(x => x.CustomerId == customerId && !x.IsDeleted, cancellationToken);
             return _mapper.Map<IEnumerable<CardDTO>>(cards);
         }
 
-        public async Task ToggleStatusAsync(int id)
+        public async Task ToggleStatusAsync(int id, CancellationToken cancellationToken = default)
         {
-             var card = await _cardRepository.GetByIdAsync(id);
+             var card = await _cardRepository.GetByIdAsync(id, cancellationToken);
             if(card == null || card.IsDeleted)
             {
                 throw new Exception("Card not found");
@@ -116,12 +116,12 @@ namespace BankApp_Api.Service.Services
             card.UpdatedAt = DateTime.Now;
 
             _cardRepository.Update(card);
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task UpdateAsync(int id, UpdateCardDTO dto)
+        public async Task UpdateAsync(int id, UpdateCardDTO dto, CancellationToken cancellationToken = default)
         {
-            var card = await _cardRepository.GetByIdAsync(id);
+            var card = await _cardRepository.GetByIdAsync(id, cancellationToken);
 
             if(card == null || card.IsDeleted)
             
@@ -131,7 +131,7 @@ namespace BankApp_Api.Service.Services
             card.UpdatedAt = DateTime.Now;
 
             _cardRepository.Update(card);
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         }
 

@@ -9,11 +9,10 @@ namespace BankApp_Api.Core.Services
 {
     public interface ICustomerService
     {
-        Task<IEnumerable<CustomerDTO>> GetAllAsync();
-        Task<CustomerDTO> GetByIdAsync(int id);
-        Task AddAsync (CreateCustomerDTO dto);
-        Task UpdateAsync (int id, UpdateCustomerDTO dto);
-        Task DeleteAsync (int id);
-
+        Task<IEnumerable<CustomerDTO>> GetAllAsync(CancellationToken cancellationToken=default);
+        Task<CustomerDTO> GetByIdAsync(int id, CancellationToken cancellationToken=default);
+        Task AddAsync (CreateCustomerDTO dto, CancellationToken cancellationToken=default);
+        Task UpdateAsync (int id, UpdateCustomerDTO dto, CancellationToken cancellationToken=default);
+        Task DeleteAsync (int id, CancellationToken cancellationToken=default);
     }
 }

@@ -10,10 +10,10 @@ namespace BankApp_Api.Core.Services
 {
     public interface ITransactionService
     {
-        Task<IEnumerable<TransactionDTO>> GetAllAsync();
-        Task<TransactionDTO?> GetByIdAsync(int id);
-        Task<IEnumerable<TransactionDTO>> GetByCardIdAsync(int cardId);
-        Task AddAsync (CreateTransactionDTO dto);
+        Task<IEnumerable<TransactionDTO>> GetAllAsync(CancellationToken cancellationToken = default);
+        Task<TransactionDTO?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+        Task<IEnumerable<TransactionDTO>> GetByCardIdAsync(int cardId, CancellationToken cancellationToken = default);
+        Task AddAsync (CreateTransactionDTO dto, CancellationToken cancellationToken = default);
 
     }
 }
