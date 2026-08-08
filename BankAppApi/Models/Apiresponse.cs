@@ -1,4 +1,6 @@
-﻿namespace BankAppApi.Models
+﻿using BankAppApi.Core.DTO.Card;
+
+namespace BankAppApi.Models
 {
     public class ApiResponse<T>
     {
@@ -24,7 +26,5 @@
                 Message = message
             };
         }
-
-
     } 
 }

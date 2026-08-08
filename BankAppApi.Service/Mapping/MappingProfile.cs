@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BankApp_Api.Core.DTO.Transaction;
 using BankAppApi.Core.DTO.Account;
 using BankAppApi.Core.DTO.Card;
 using BankAppApi.Core.DTO.Customer;
@@ -26,7 +27,8 @@ namespace BankAppApi.Service.Mapping
             CreateMap<CreateCardDTO, Card>();   
 
             CreateMap<Transaction, TransactionDTO>();
-            CreateMap<CreateTransactionDTO, Transaction>(); 
+            CreateMap<CreateTransactionDTO, Transaction>();
+            CreateMap<TransactionType, TransactionTypeDTO>().ReverseMap();
         }
 
     }
