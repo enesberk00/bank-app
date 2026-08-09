@@ -49,14 +49,18 @@ A robust, production-ready Bank Application Web API built with **.NET Core (C#)*
    cd bank-app
    
 2. Configure AppSettings:
+   
    Open appsettings.json in the API project.
+   
    Update DefaultConnection for PostgreSQL and the Redis connection string.
 
-3. Apply Migrations:
-   
+4. **Apply Migrations:**
+    ```bash
    dotnet ef database update --project YourProject.Data --startup-project YourProject.API
 
-4.Run the Application:
+4.**Run the Application:**
+ ```bash
+
   dotnet run --project YourProject.API
 
 
