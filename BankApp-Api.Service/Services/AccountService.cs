@@ -26,28 +26,28 @@ namespace BankApp_Api.Service.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<AccountDTO>> GetAllAsync()
+        public async Task<IEnumerable<AccountDTO>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            var accounts = await _accountRepository.WhereAsync(a => !a.IsDeleted);
+            var accounts = await _accountRepository.WhereAsync(a => !a.IsDeleted, cancellationToken);
             return _mapper.Map<IEnumerable<AccountDTO>>(accounts);
         }
 
-        public async Task<AccountDTO?> GetByIdAsync(int id)
+        public async Task<AccountDTO?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            var account = await _accountRepository.GetByIdAsync(id);
+            var account = await _accountRepository.GetByIdAsync(id, cancellationToken);
             if (account == null || account.IsDeleted)
-                throw new KeyNotFoundException($"Account with id {id} not found.");
+                throw new KeyNotFoundException($"Account not found.");
 
             return _mapper.Map<AccountDTO>(account);
         }
 
-        public async Task<IEnumerable<AccountDTO>> GetByCustomerIdAsync(int customerId)
+        public async Task<IEnumerable<AccountDTO>> GetByCustomerIdAsync(int customerId, CancellationToken cancellationToken = default)
         {
-            var accounts = await _accountRepository.WhereAsync(a => a.CustomerId == customerId && !a.IsDeleted);
+            var accounts = await _accountRepository.WhereAsync(a => a.CustomerId == customerId && !a.IsDeleted, cancellationToken);
             return _mapper.Map<IEnumerable<AccountDTO>>(accounts);
         }
 
-        public async Task AddAsync(CreateAccountDTO dto)
+        public async Task AddAsync(CreateAccountDTO dto, CancellationToken cancellationToken = default)
         {
             var account = _mapper.Map<Account>(dto);
 
@@ -57,42 +57,41 @@ namespace BankApp_Api.Service.Services
             account.CreatedAt = DateTime.UtcNow;
             account.UpdatedAt = DateTime.UtcNow;
 
-            await _accountRepository.AddAsync(account);
-            await _unitOfWork.SaveChangesAsync();
+            await _accountRepository.AddAsync(account, cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task UpdateAsync(int id, UpdateAccountDTO dto)
+        public async Task UpdateAsync(int id, UpdateAccountDTO dto, CancellationToken cancellationToken = default)
         {
-            var account = await _accountRepository.GetByIdAsync(id);
+            var account = await _accountRepository.GetByIdAsync(id, cancellationToken);
             if (account == null || account.IsDeleted)
-                throw new KeyNotFoundException($"Account with id {id} not found.");
-
+                throw new KeyNotFoundException($"Account not found.");
             account.AccountName = dto.AccountName ?? account.AccountName;   
             account.UpdatedAt = DateTime.UtcNow;
 
             _accountRepository.Update(account);
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
-        public async Task ToggleStatusAsync(int id)
+        public async Task ToggleStatusAsync(int id, CancellationToken cancellationToken = default)
         {
-            var account = await _accountRepository.GetByIdAsync(id);
+            var account = await _accountRepository.GetByIdAsync(id, cancellationToken);
             if (account == null || account.IsDeleted)
                 throw new Exception("Account not found.");
             account.AccountStatus = !account.AccountStatus;
             account.UpdatedAt = DateTime.UtcNow;
             _accountRepository.Update(account);
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
-            var account = await _accountRepository.GetByIdAsync(id);
+            var account = await _accountRepository.GetByIdAsync(id, cancellationToken);
             if (account == null || account.IsDeleted)
                 throw new KeyNotFoundException($"Account with id {id} not found.");
             account.IsDeleted = true;
             account.UpdatedAt = DateTime.UtcNow;
             _accountRepository.Update(account);
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
         // Helper methods to generate account number and IBAN
 

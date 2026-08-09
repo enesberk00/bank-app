@@ -27,10 +27,10 @@ namespace BankApp_Api.Service.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task AddAsync(CreateTransactionDTO dto)
+        public async Task AddAsync(CreateTransactionDTO dto, CancellationToken cancellationToken = default)
 
         {
-            var card = await _cardRepository.GetByIdAsync(dto.CardId);
+            var card = await _cardRepository.GetByIdAsync(dto.CardId,cancellationToken);
 
             // Check if the card exists and is not deleted
             if (card == null || card.IsDeleted)
@@ -45,7 +45,7 @@ namespace BankApp_Api.Service.Services
             
             if (dto.AccountId.HasValue)
             {
-                var account = await _accountRepository.GetByIdAsync(dto.AccountId.Value);
+                var account = await _accountRepository.GetByIdAsync(dto.AccountId.Value, cancellationToken);
                                 // Check if the account exists and is not deleted
                 if (account == null || account.IsDeleted)
                 {
@@ -65,30 +65,30 @@ namespace BankApp_Api.Service.Services
             transaction.CreatedAt = DateTime.UtcNow;
             transaction.UpdatedAt = DateTime.UtcNow;
 
-            await _transactionRepository.AddAsync(transaction);
-            await _unitOfWork.SaveChangesAsync();
+            await _transactionRepository.AddAsync(transaction, cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         }
 
-        public async Task<IEnumerable<TransactionDTO>> GetAllAsync()
+        public async Task<IEnumerable<TransactionDTO>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            var transactions = await _transactionRepository.WhereAsync(x => !x.IsDeleted);
+            var transactions = await _transactionRepository.WhereAsync(x => !x.IsDeleted, cancellationToken);
 
             return _mapper.Map<IEnumerable<TransactionDTO>>(transactions);
 
         }
 
-        public async Task<IEnumerable<TransactionDTO>> GetByCardIdAsync(int cardId)
+        public async Task<IEnumerable<TransactionDTO>> GetByCardIdAsync(int cardId, CancellationToken cancellationToken = default)
         {
-            var transactions = await _transactionRepository.WhereAsync(x => !x.IsDeleted && x.CardId == cardId);
+            var transactions = await _transactionRepository.WhereAsync(x => !x.IsDeleted && x.CardId == cardId, cancellationToken);
 
             return _mapper.Map<IEnumerable<TransactionDTO>>(transactions);
 
         }
 
-        public async Task<TransactionDTO?> GetByIdAsync(int id)
+        public async Task<TransactionDTO?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            var transaction = await _transactionRepository.GetByIdAsync(id);
+            var transaction = await _transactionRepository.GetByIdAsync(id, cancellationToken);
 
             if (transaction == null || transaction.IsDeleted)
             {

@@ -135,3 +135,6 @@ C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\staticwebas
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\BCrypt-Net-Next.dll
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\System.Formats.Asn1.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\StackExchange.Redis.dll

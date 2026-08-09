@@ -8,6 +8,6 @@ namespace BankApp_Api.Core.Repositories
 {
     public interface IUnitOfWork:IDisposable
     {
-        Task<int> SaveChangesAsync();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

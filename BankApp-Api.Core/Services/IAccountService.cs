@@ -9,12 +9,12 @@ namespace BankApp_Api.Core.Services
 {
     public interface IAccountService
     {
-        Task<IEnumerable<AccountDTO>> GetAllAsync();
-        Task<AccountDTO?> GetByIdAsync(int id);
-        Task<IEnumerable<AccountDTO>> GetByCustomerIdAsync(int customerId);
-        Task AddAsync(CreateAccountDTO dto);
-        Task UpdateAsync(int id, UpdateAccountDTO dto);
-        Task ToggleStatusAsync (int id);
-        Task DeleteAsync(int id);
+        Task<IEnumerable<AccountDTO>> GetAllAsync(CancellationToken cancellationToken=default);
+        Task<AccountDTO?> GetByIdAsync(int id, CancellationToken cancellationToken=default);
+        Task<IEnumerable<AccountDTO>> GetByCustomerIdAsync(int customerId, CancellationToken cancellationToken=default);
+        Task AddAsync(CreateAccountDTO dto, CancellationToken cancellationToken=default);
+        Task UpdateAsync(int id, UpdateAccountDTO dto, CancellationToken cancellationToken=default);
+        Task ToggleStatusAsync (int id, CancellationToken cancellationToken=default);
+        Task DeleteAsync(int id, CancellationToken cancellationToken=default);
     }
 }

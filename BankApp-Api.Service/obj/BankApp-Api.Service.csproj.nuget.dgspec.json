@@ -217,9 +217,17 @@
               "target": "Package",
               "version": "[4.2.0, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
               "version": "[12.1.1, )"
+            },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[8.0.29, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
