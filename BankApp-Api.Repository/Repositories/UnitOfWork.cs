@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BankApp_Api.Repository.Repositories
 {
-    internal class UnitOfWork<T> : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _context;
         public UnitOfWork(AppDbContext context)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankApp_Api.Core.Services
 {
-    internal interface ICardService
+    public interface ICardService
     {
         Task<IEnumerable<CardDTO>> GetAllAsync();
         Task<CardDTO> GetAsync(int id);
@@ -19,6 +19,7 @@ namespace BankApp_Api.Core.Services
         Task UpdateAsync (int id, UpdateCardDTO dto);
 
         Task DeleteAsync (int id);
+        Task ToggleStatusAsync(int id);
 
     }
 }

@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace BankApp_Api.Core.Services
 {
-    internal interface IAccountService
+    public interface IAccountService
     {
         Task<IEnumerable<AccountDTO>> GetAllAsync();
         Task<AccountDTO?> GetByIdAsync(int id);
         Task<IEnumerable<AccountDTO>> GetByCustomerIdAsync(int customerId);
         Task AddAsync(CreateAccountDTO dto);
         Task UpdateAsync(int id, UpdateAccountDTO dto);
+        Task ToggleStatusAsync (int id);
         Task DeleteAsync(int id);
     }
 }

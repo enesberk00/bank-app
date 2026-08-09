@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ebk90\\source\\repos\\BankApp-Api\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DAA4AC03-8D2A-4EC2-ACD0-D40CA2C4113A}|BankApp-Api.Service\\BankApp-Api.Service.csproj|c:\\users\\ebk90\\source\\repos\\bankapp-api\\bankapp-api.service\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAA4AC03-8D2A-4EC2-ACD0-D40CA2C4113A}|BankApp-Api.Service\\BankApp-Api.Service.csproj|solutionrelative:bankapp-api.service\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FCC9D13-EC11-4815-95BA-35311607D549}|BankApp-Api.Core\\BankApp-Api.Core.csproj|c:\\users\\ebk90\\source\\repos\\bankapp-api\\bankapp-api.core\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FCC9D13-EC11-4815-95BA-35311607D549}|BankApp-Api.Core\\BankApp-Api.Core.csproj|solutionrelative:bankapp-api.core\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,6 +43,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\ebk90\\source\\repos\\BankApp-Api\\BankApp-Api.Service\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "BankApp-Api.Service\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\ebk90\\source\\repos\\BankApp-Api\\BankApp-Api.Service\\Services\\AuthService.cs",
+              "RelativeToolTip": "BankApp-Api.Service\\Services\\AuthService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAcwEwAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-04T21:58:32.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\ebk90\\source\\repos\\BankApp-Api\\BankApp-Api.Core\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "BankApp-Api.Core\\Services\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\ebk90\\source\\repos\\BankApp-Api\\BankApp-Api.Core\\Services\\IAuthService.cs",
+              "RelativeToolTip": "BankApp-Api.Core\\Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-04T21:58:10.281Z",
+              "EditorCaption": ""
             }
           ]
         }

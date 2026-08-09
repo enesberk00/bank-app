@@ -125,3 +125,13 @@ C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\BankApp-Api
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\BankApp-Api.Service.pdb
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\BankApp-Api.Repository.pdb
 C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\BankApp-Api.sourcelink.json
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\BCrypt-Net-Next.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\ebk90\source\repos\BankApp-Api\BankApp-Api\bin\Debug\net8.0\System.Formats.Asn1.dll

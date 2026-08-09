@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankApp-Api.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bb6f300a30da3b5f7a681e403aef4405a5d4661")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6fd8114c61156d4d36b820cd2d08f2f01a1d5aa0")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankApp-Api.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankApp-Api.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
