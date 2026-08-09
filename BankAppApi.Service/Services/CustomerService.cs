@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+using AutoMapper;
+using BankApp_Api.Repository.Entities;
 using BankAppApi.Core.DTO.Customer;
 using BankAppApi.Core.Repositories;
 using BankAppApi.Core.Services;
@@ -18,11 +19,11 @@ namespace BankAppApi.Service.Services
         private readonly IGenericRepository<Customer> _customerRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IDistributedCache _cache; // this is a interface for Redis cache
-        private const string CacheKey = "CustomerList"; // this is a key for Redis cache
+        private readonly IDistributedCache _cache;
+        private const string CacheKey = "CustomerList";
 
         public CustomerService(
-            IGenericRepository<Customer> customerRepository, IUnitOfWork unitOfWork, IMapper mapper,IDistributedCache cache)
+            IGenericRepository<Customer> customerRepository, IUnitOfWork unitOfWork, IMapper mapper, IDistributedCache cache)
         {
             _customerRepository = customerRepository;
             _unitOfWork = unitOfWork;
@@ -30,24 +31,22 @@ namespace BankAppApi.Service.Services
             _cache = cache;
         }
 
-        public async Task<IEnumerable<CustomerDTO>> GetAllAsync(CancellationToken cancellationToken= default)
+        public async Task<IEnumerable<CustomerDTO>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            // First rule is Ask to Redis Cache if there is a data in the cache with the key "CustomerList"
+            // First rule: Ask Redis Cache if there is data with the key "CustomerList"
             var cachedData = await _cache.GetStringAsync(CacheKey, cancellationToken);
 
-            if(!string.IsNullOrEmpty(cachedData))
+            if (!string.IsNullOrEmpty(cachedData))
             {
-                // If there is a data in the cache, return it
+                // If there is data in the cache, return it
                 return JsonSerializer.Deserialize<IEnumerable<CustomerDTO>>(cachedData);
             }
 
-            // Second Rule is If there isnt data in the cache, get it from the database
-
+            // Second Rule: If there isn't data in the cache, get it from the database
             var customers = await _customerRepository.WhereAsync(c => !c.IsDeleted, cancellationToken);
             var customerDTOs = _mapper.Map<IEnumerable<CustomerDTO>>(customers);
 
-            // Third Rule is Save the data to the cache for future requests.
-            // Also we can set an expiration time for the cache, for example 30 minutes.
+            // Third Rule: Save the data to the cache for future requests (30 min expiry)
             var cacheOptions = new DistributedCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30)
@@ -55,7 +54,6 @@ namespace BankAppApi.Service.Services
 
             await _cache.SetStringAsync(CacheKey, JsonSerializer.Serialize(customerDTOs), cacheOptions, cancellationToken);
 
-            // Finally return the data to the client
             return customerDTOs;
         }
 
@@ -72,8 +70,8 @@ namespace BankAppApi.Service.Services
         public async Task AddAsync(CreateCustomerDTO dto, CancellationToken cancellationToken = default)
         {
             var customer = _mapper.Map<Customer>(dto);
-            customer.CreatedAt = DateTime.UtcNow;
-            customer.UpdatedAt = DateTime.UtcNow;
+            customer.CreatedAt = DateTime.Now;
+            customer.UpdatedAt = DateTime.Now;
 
             await _customerRepository.AddAsync(customer, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
@@ -81,6 +79,7 @@ namespace BankAppApi.Service.Services
             // Invalidate the cache after adding a new customer
             await _cache.RemoveAsync(CacheKey, cancellationToken);
         }
+
         public async Task UpdateAsync(int id, UpdateCustomerDTO dto, CancellationToken cancellationToken = default)
         {
             var customer = await _customerRepository.GetByIdAsync(id, cancellationToken);
@@ -92,7 +91,7 @@ namespace BankAppApi.Service.Services
             customer.CustomerFullName = dto.CustomerFullName ?? customer.CustomerFullName;
             customer.CustomerBplace = dto.CustomerBplace ?? customer.CustomerBplace;
             customer.CustomerRiskLimit = dto.CustomerRiskLimit != 0 ? dto.CustomerRiskLimit : customer.CustomerRiskLimit;
-            customer.UpdatedAt = DateTime.UtcNow;
+            customer.UpdatedAt = DateTime.Now;
 
             _customerRepository.Update(customer);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
@@ -109,14 +108,12 @@ namespace BankAppApi.Service.Services
                 throw new Exception($"Customer not found.");
             }
             customer.IsDeleted = true;
-            customer.UpdatedAt = DateTime.UtcNow;
+            customer.UpdatedAt = DateTime.Now;
             _customerRepository.Update(customer);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             // Invalidate the cache after deleting a customer
             await _cache.RemoveAsync(CacheKey, cancellationToken);
         }
-
     }
 }
-

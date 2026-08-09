@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BankApp_Api.Repository.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankAppApi.Repository.Entities;

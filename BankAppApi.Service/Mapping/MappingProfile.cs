@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using BankApp_Api.Core.DTO.Transaction;
+using BankApp_Api.Repository.Entities;
 using BankAppApi.Core.DTO.Account;
 using BankAppApi.Core.DTO.Card;
 using BankAppApi.Core.DTO.Customer;
 using BankAppApi.Core.DTO.Transaction;
-using BankAppApi.Repository.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace BankAppApi.Service.Mapping
 {
-    internal class MappingProfile : Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {

@@ -1,4 +1,5 @@
-﻿using BankAppApi.Core.DTO.Auth;
+﻿using BankApp_Api.Repository.Entities;
+using BankAppApi.Core.DTO.Auth;
 using BankAppApi.Core.Repositories;
 using BankAppApi.Core.Services;
 using BankAppApi.Repository.Entities;
@@ -69,8 +70,8 @@ namespace BankAppApi.Service.Services
                 Username = dto.Username,
                 Email = dto.Email,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
             };
 
             await _userRepository.AddAsync(user, cancellationToken);

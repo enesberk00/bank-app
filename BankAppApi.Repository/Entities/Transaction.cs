@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BankAppApi.Repository.Entities;
+namespace BankApp_Api.Repository.Entities;
 
 public partial class Transaction
 {
@@ -31,4 +31,3 @@ public partial class Transaction
 
     public virtual TransactionType TransactionType { get; set; } = null!;
 }
-

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+using AutoMapper;
+using BankApp_Api.Repository.Entities;
 using BankAppApi.Core.DTO.Account;
 using BankAppApi.Core.Repositories;
 using BankAppApi.Core.Services;
@@ -54,8 +55,8 @@ namespace BankAppApi.Service.Services
             account.AccountNo = GenerateAccountNumber();
             account.AccountIban = GenerateIban(account.AccountNo);
             account.AccountStatus = true;
-            account.CreatedAt = DateTime.UtcNow;
-            account.UpdatedAt = DateTime.UtcNow;
+            account.CreatedAt = DateTime.Now;
+            account.UpdatedAt = DateTime.Now;
 
             await _accountRepository.AddAsync(account, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
@@ -67,7 +68,7 @@ namespace BankAppApi.Service.Services
             if (account == null || account.IsDeleted)
                 throw new KeyNotFoundException($"Account not found.");
             account.AccountName = dto.AccountName ?? account.AccountName;   
-            account.UpdatedAt = DateTime.UtcNow;
+            account.UpdatedAt = DateTime.Now;
 
             _accountRepository.Update(account);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
@@ -78,7 +79,7 @@ namespace BankAppApi.Service.Services
             if (account == null || account.IsDeleted)
                 throw new Exception("Account not found.");
             account.AccountStatus = !account.AccountStatus;
-            account.UpdatedAt = DateTime.UtcNow;
+            account.UpdatedAt = DateTime.Now;
             _accountRepository.Update(account);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
@@ -89,7 +90,7 @@ namespace BankAppApi.Service.Services
             if (account == null || account.IsDeleted)
                 throw new KeyNotFoundException($"Account with id {id} not found.");
             account.IsDeleted = true;
-            account.UpdatedAt = DateTime.UtcNow;
+            account.UpdatedAt = DateTime.Now;
             _accountRepository.Update(account);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }

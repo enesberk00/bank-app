@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BankAppApi.Service.Validators
 {
-    internal class CreateTransactionValidator : AbstractValidator<CreateTransactionDTO>
+    public class CreateTransactionValidator : AbstractValidator<CreateTransactionDTO>
     {
         public CreateTransactionValidator()
         {

@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
+using BankApp_Api.Repository.Entities;
 using BankAppApi.Core.DTO.Transaction;
 using BankAppApi.Core.Repositories;
 using BankAppApi.Core.Services;
-using BankAppApi.Repository.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,13 +57,13 @@ namespace BankAppApi.Service.Services
                 }
 
                 account.AccountBalance -= dto.TransactionAmount;
-                account.UpdatedAt = DateTime.UtcNow;
+                account.UpdatedAt = DateTime.Now;
                 _accountRepository.Update(account);
             }
 
             var transaction = _mapper.Map<Transaction>(dto);
-            transaction.CreatedAt = DateTime.UtcNow;
-            transaction.UpdatedAt = DateTime.UtcNow;
+            transaction.CreatedAt = DateTime.Now;
+            transaction.UpdatedAt = DateTime.Now;
 
             await _transactionRepository.AddAsync(transaction, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);

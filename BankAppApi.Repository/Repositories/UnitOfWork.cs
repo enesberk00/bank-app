@@ -1,5 +1,5 @@
-﻿using BankAppApi.Core.Repositories;
-using BankAppApi.Repository.Contexts;
+﻿using BankApp_Api.Repository.Contexts;
+using BankAppApi.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

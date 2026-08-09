@@ -1,5 +1,4 @@
-﻿using BankAppApi.Repository.Contexts;
-using BankAppApi.Core.Repositories;
+﻿using BankAppApi.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using BankApp_Api.Repository.Contexts;
 
 namespace BankAppApi.Repository.Repositories
 {

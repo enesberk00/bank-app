@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BankAppApi.Repository.Entities;
+namespace BankApp_Api.Repository.Entities;
 
 public partial class User
 {
@@ -21,4 +21,3 @@ public partial class User
 
     public DateTime? DeletedAt { get; set; }
 }
-

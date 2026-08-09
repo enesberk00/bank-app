@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BankApp_Api.Repository.Entities;
 using BankAppApi.Core.DTO.Card;
 using BankAppApi.Core.Repositories;
 using BankAppApi.Core.Services;

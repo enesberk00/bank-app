@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using BankAppApi.Repository.Entities;
+using BankApp_Api.Repository.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BankAppApi.Repository.Contexts;
+namespace BankApp_Api.Repository.Contexts;
 
 public partial class AppDbContext : DbContext
 {
@@ -28,6 +28,7 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<TransactionType> TransactionTypes { get; set; }
 
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -280,9 +281,46 @@ public partial class AppDbContext : DbContext
                 .HasColumnName("updated_at");
         });
 
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("Users_pkey");
+
+            entity.ToTable("users");
+
+            entity.HasIndex(e => e.Email, "email").IsUnique();
+
+            entity.HasIndex(e => e.Username, "username").IsUnique();
+
+            entity.Property(e => e.Id)
+                .HasDefaultValueSql("nextval('\"Users_id_seq\"'::regclass)")
+                .HasColumnName("id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("created_at");
+            entity.Property(e => e.DeletedAt)
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("deleted_at");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .HasColumnName("email");
+            entity.Property(e => e.IsDeleted)
+                .HasDefaultValue(false)
+                .HasColumnName("is_deleted");
+            entity.Property(e => e.PasswordHash)
+                .HasMaxLength(255)
+                .HasColumnName("password_hash");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("updated_at");
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .HasColumnName("username");
+        });
+
         OnModelCreatingPartial(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
-

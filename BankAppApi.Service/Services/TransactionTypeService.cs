@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using BankApp_Api.Core.DTO.Transaction;
+using BankApp_Api.Repository.Entities;
 using BankAppApi.Core.Repositories;
 using BankAppApi.Core.Services;
-using BankAppApi.Repository.Entities;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace BankApp_Api.Service.Services
         {
 
 
-            var types = await _repository.WhereAsync(t=> !t.IsDeleted,cancellationToken);
+            var types = await _repository.WhereAsync(t => !t.IsDeleted,cancellationToken);
             return _mapper.Map<IEnumerable<TransactionTypeDTO>>(types);
 
         }

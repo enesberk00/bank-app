@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BankAppApi.Repository.Entities;
+namespace BankApp_Api.Repository.Entities;
 
 public partial class Customer
 {
@@ -29,4 +29,3 @@ public partial class Customer
 
     public virtual ICollection<Card> Cards { get; set; } = new List<Card>();
 }
-
