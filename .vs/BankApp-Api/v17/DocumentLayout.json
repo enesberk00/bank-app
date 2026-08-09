@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ebk90\\source\\repos\\BankApp-Api\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{AC292D68-46F4-4AAC-B8C7-2273EE3EBC97}|BankApp-Api\\BankApp-Api.csproj|c:\\users\\ebk90\\source\\repos\\bankapp-api\\bankapp-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC292D68-46F4-4AAC-B8C7-2273EE3EBC97}|BankApp-Api\\BankApp-Api.csproj|solutionrelative:bankapp-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,19 +34,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ebk90\\source\\repos\\BankApp-Api\\BankApp-Api\\Program.cs",
-              "RelativeDocumentMoniker": "BankApp-Api\\Program.cs",
-              "ToolTip": "C:\\Users\\ebk90\\source\\repos\\BankApp-Api\\BankApp-Api\\Program.cs",
-              "RelativeToolTip": "BankApp-Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-27T19:50:33.465Z",
-              "EditorCaption": ""
             }
           ]
         }

@@ -1,0 +1,19 @@
+﻿using BankApp_Api.Core.DTO.Customer;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankApp_Api.Core.Services
+{
+    internal interface ICustomerService
+    {
+        Task<IEnumerable<CustomerDTO>> GetAllAsync();
+        Task<CustomerDTO> GetByIdAsync(int id);
+        Task AddAsync (CustomerDTO dto);
+        Task UpdateAsync (int id, CustomerDTO dto);
+        Task DeleteAsync (int id);
+
+    }
+}
