@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankApp_Api.Core.Repositories
 {
-    internal interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
